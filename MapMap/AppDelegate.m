@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "APIKey.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "MapViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +22,9 @@
     [GMSServices provideAPIKey:kAPIKey];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    MapViewController *mapViewController = [[MapViewController alloc] init];
+    
+    self.window.rootViewController = mapViewController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

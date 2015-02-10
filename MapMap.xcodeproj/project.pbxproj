@@ -26,6 +26,7 @@
 		1CE427951A89E198004ECED5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE427891A89E198004ECED5 /* OpenGLES.framework */; };
 		1CE427961A89E198004ECED5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE4278A1A89E198004ECED5 /* QuartzCore.framework */; };
 		1CE427971A89E198004ECED5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE4278B1A89E198004ECED5 /* SystemConfiguration.framework */; };
+		1CE4279A1A89E307004ECED5 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE427991A89E307004ECED5 /* MapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		1CE427891A89E198004ECED5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		1CE4278A1A89E198004ECED5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1CE4278B1A89E198004ECED5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1CE427981A89E307004ECED5 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		1CE427991A89E307004ECED5 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 				1CE4277F1A89DFC2004ECED5 /* APIKey.h */,
 				1CE427581A89C6FE004ECED5 /* AppDelegate.h */,
 				1CE427591A89C6FE004ECED5 /* AppDelegate.m */,
+				1CE427981A89E307004ECED5 /* MapViewController.h */,
+				1CE427991A89E307004ECED5 /* MapViewController.m */,
 				1CE427611A89C6FE004ECED5 /* Images.xcassets */,
 				1CE427631A89C6FE004ECED5 /* LaunchScreen.xib */,
 				1CE427541A89C6FE004ECED5 /* Supporting Files */,
@@ -276,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CE4279A1A89E307004ECED5 /* MapViewController.m in Sources */,
 				1CE4275A1A89C6FE004ECED5 /* AppDelegate.m in Sources */,
 				1CE427571A89C6FE004ECED5 /* main.m in Sources */,
 			);
