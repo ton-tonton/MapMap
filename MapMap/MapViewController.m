@@ -66,6 +66,7 @@
         self.mark1 = [GMSMarker markerWithPosition:position];
         self.mark1.title = @"Mark 1";
         self.mark1.appearAnimation = kGMSMarkerAnimationPop;
+        self.mark1.draggable = YES;
         
         self.mark1.map = self.mapView_;
         
@@ -74,9 +75,16 @@
         self.mark2 = [GMSMarker markerWithPosition:position];
         self.mark2.title = @"Mark 2";
         self.mark2.appearAnimation = kGMSMarkerAnimationPop;
+        self.mark2.draggable = YES;
 
         self.mark2.map = self.mapView_;
     }
+}
+
+-(void)mapView:(GMSMapView *)mapView didEndDraggingMarker:(GMSMarker *)marker
+{
+    CLLocationCoordinate2D coo = marker.position;
+    NSLog(@"%@: new position lat:%f, lon:%f", marker.title, coo.latitude, coo.longitude);
 }
 
 @end
