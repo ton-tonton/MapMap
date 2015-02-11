@@ -40,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C20CBED1A8B264A006FC75B /* Pddk.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Pddk.gpx; sourceTree = "<group>"; };
 		1CE427511A89C6FE004ECED5 /* MapMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CE427551A89C6FE004ECED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CE427561A89C6FE004ECED5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -122,6 +123,7 @@
 		1CE427531A89C6FE004ECED5 /* MapMap */ = {
 			isa = PBXGroup;
 			children = (
+				1C20CBED1A8B264A006FC75B /* Pddk.gpx */,
 				1CE4277F1A89DFC2004ECED5 /* APIKey.h */,
 				1CE427581A89C6FE004ECED5 /* AppDelegate.h */,
 				1CE427591A89C6FE004ECED5 /* AppDelegate.m */,
@@ -476,6 +478,7 @@
 				1CE427761A89C6FE004ECED5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1CE427771A89C6FE004ECED5 /* Build configuration list for PBXNativeTarget "MapMapTests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +487,7 @@
 				1CE427791A89C6FE004ECED5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
