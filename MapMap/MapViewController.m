@@ -38,8 +38,12 @@
     }
     
     [_locationManager startUpdatingLocation];
+    NSLog(@"start update location");
     
     CLLocation *location = _locationManager.location;
+    
+    NSLog(@"lat:%f, lon:%f", location.coordinate.latitude, location.coordinate.longitude);
+    
     _camera = [GMSCameraPosition cameraWithLatitude:location.coordinate.latitude
                                           longitude:location.coordinate.longitude
                                                zoom:17];
@@ -85,6 +89,18 @@
 
 #pragma mark - CLLocationManagerDelegate
 
+-(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        NSLog(@"authorized");
+        CLLocationCoordinate2D current = CLLocationCoordinate2DMake(_locationManager.location.coordinate.latitude, _locationManager.location.coordinate.longitude);
+        GMSCameraUpdate *updateCam = [GMSCameraUpdate setTarget:current];
+        [_mapView_ animateWithCameraUpdate:updateCam];
+        
+    } else {
+        NSLog(@"denied");
+    }
+}
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     [_locationManager stopUpdatingLocation];
