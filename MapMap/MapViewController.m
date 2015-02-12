@@ -10,7 +10,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface MapViewController () <GMSMapViewDelegate>
+@interface MapViewController () <GMSMapViewDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) GMSCameraPosition *camera;
@@ -29,9 +29,14 @@
     [super viewDidLoad];
     
     _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
     _locationManager.distanceFilter = kCLDistanceFilterNone;
     _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-
+    
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
     [_locationManager startUpdatingLocation];
     
     CLLocation *location = _locationManager.location;
@@ -40,18 +45,9 @@
                                                zoom:17];
     
     self.mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:_camera];
-    self.mapView_.myLocationEnabled = YES;
     self.mapView_.delegate = self;
     
     self.view = self.mapView_;
-    
-    NSLog(@"User's location: %@", [self deviceLocation]);
-}
-
-- (NSString *)deviceLocation
-{
-    NSString *theLocation = [NSString stringWithFormat:@"latitude: %f longitude: %f", _locationManager.location.coordinate.latitude, _locationManager.location.coordinate.longitude];
-    return theLocation;
 }
 
 #pragma mark - GMSMapViewDelegate
@@ -85,6 +81,20 @@
 {
     CLLocationCoordinate2D coo = marker.position;
     NSLog(@"%@: new position lat:%f, lon:%f", marker.title, coo.latitude, coo.longitude);
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    [_locationManager stopUpdatingLocation];
+    NSLog(@"User's location: %@", [self deviceLocation]);
+}
+
+- (NSString *)deviceLocation
+{
+    NSString *theLocation = [NSString stringWithFormat:@"latitude: %f longitude: %f", _locationManager.location.coordinate.latitude, _locationManager.location.coordinate.longitude];
+    return theLocation;
 }
 
 @end
