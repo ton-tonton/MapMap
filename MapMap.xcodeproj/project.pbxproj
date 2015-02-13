@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CBC418D1A8DD59D002801F9 /* DirectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBC418C1A8DD59D002801F9 /* DirectionService.m */; };
 		1CE427571A89C6FE004ECED5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE427561A89C6FE004ECED5 /* main.m */; };
 		1CE4275A1A89C6FE004ECED5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE427591A89C6FE004ECED5 /* AppDelegate.m */; };
 		1CE427621A89C6FE004ECED5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CE427611A89C6FE004ECED5 /* Images.xcassets */; };
@@ -41,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		1C20CBED1A8B264A006FC75B /* Pddk.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Pddk.gpx; sourceTree = "<group>"; };
+		1CBC418B1A8DD59D002801F9 /* DirectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionService.h; sourceTree = "<group>"; };
+		1CBC418C1A8DD59D002801F9 /* DirectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionService.m; sourceTree = "<group>"; };
 		1CE427511A89C6FE004ECED5 /* MapMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CE427551A89C6FE004ECED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CE427561A89C6FE004ECED5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 				1CE427591A89C6FE004ECED5 /* AppDelegate.m */,
 				1CE427981A89E307004ECED5 /* MapViewController.h */,
 				1CE427991A89E307004ECED5 /* MapViewController.m */,
+				1CBC418B1A8DD59D002801F9 /* DirectionService.h */,
+				1CBC418C1A8DD59D002801F9 /* DirectionService.m */,
 				1CE427611A89C6FE004ECED5 /* Images.xcassets */,
 				1CE427631A89C6FE004ECED5 /* LaunchScreen.xib */,
 				1CE427541A89C6FE004ECED5 /* Supporting Files */,
@@ -286,6 +291,7 @@
 				1CE4279A1A89E307004ECED5 /* MapViewController.m in Sources */,
 				1CE4275A1A89C6FE004ECED5 /* AppDelegate.m in Sources */,
 				1CE427571A89C6FE004ECED5 /* main.m in Sources */,
+				1CBC418D1A8DD59D002801F9 /* DirectionService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +414,7 @@
 				INFOPLIST_FILE = MapMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Wno-arc-performSelector-leaks";
 			};
 			name = Debug;
 		};
@@ -422,6 +429,7 @@
 				INFOPLIST_FILE = MapMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Wno-arc-performSelector-leaks";
 			};
 			name = Release;
 		};
