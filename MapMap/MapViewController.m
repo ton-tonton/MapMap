@@ -20,6 +20,8 @@
 @property (nonatomic) NSMutableArray *waypoints;
 @property (nonatomic) NSMutableArray *waypointStrings;
 
+@property (nonatomic) GMSPolyline *polyline;
+
 @end
 
 @implementation MapViewController
@@ -77,6 +79,7 @@
     NSLog(@"you tap at %f, %f", coordinate.latitude, coordinate.longitude);
     
     CLLocationCoordinate2D position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+    
     NSString *positionString = [NSString stringWithFormat:@"%f,%f", position.latitude, position.longitude];
     [_waypointStrings addObject:positionString];
     
@@ -94,20 +97,7 @@
         
         NSLog(@"%d", count);
         
-        if ([_waypoints count] > 1) {
-            NSLog(@"add direction...");
-        
-            NSString *sensor = @"false";
-            NSArray *parameters = @[sensor, _waypointStrings];
-            NSArray *keys = @[@"sensor", @"waypoints"];
-            NSDictionary *query = [NSDictionary dictionaryWithObjects:parameters forKeys:keys];
-        
-            NSLog(@"%@", query);
-        
-            DirectionService *ds = [[DirectionService alloc] init];
-            SEL selector = @selector(addDirections:);
-            [ds setDirectionQuery:query withSelector:selector withDelegate:self];
-        }
+        [self requestDirectionService];
     }
 }
 
@@ -115,6 +105,22 @@
 {  
     CLLocationCoordinate2D coo = marker.position;
     NSLog(@"%@: new position lat:%f, lon:%f", marker.title, coo.latitude, coo.longitude);
+    
+    [_waypointStrings removeAllObjects];
+    
+    for (GMSMarker *marker in _waypoints) {
+        
+        CLLocationCoordinate2D position = marker.position;
+        NSString *positionString = [NSString stringWithFormat:@"%f,%f", position.latitude, position.longitude];
+        [_waypointStrings addObject:positionString];
+    }
+
+    [self requestDirectionService];
+}
+
+-(void)mapView:(GMSMapView *)mapView didBeginDraggingMarker:(GMSMarker *)marker
+{
+    _polyline.map = nil;
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -149,6 +155,24 @@
 
 #pragma mark - direction service
 
+-(void)requestDirectionService
+{
+    if ([_waypoints count] > 1) {
+        NSLog(@"add direction...");
+        
+        NSString *sensor = @"false";
+        NSArray *parameters = @[sensor, _waypointStrings];
+        NSArray *keys = @[@"sensor", @"waypoints"];
+        NSDictionary *query = [NSDictionary dictionaryWithObjects:parameters forKeys:keys];
+        
+        NSLog(@"%@", query);
+        
+        DirectionService *ds = [[DirectionService alloc] init];
+        SEL selector = @selector(addDirections:);
+        [ds setDirectionQuery:query withSelector:selector withDelegate:self];
+    }
+}
+
 -(void)addDirections:(NSDictionary *)json
 {
     NSDictionary *routes = [json objectForKey:@"routes"][0];
@@ -156,8 +180,8 @@
     NSString *overview_route = [route objectForKey:@"points"];
     
     GMSPath *path = [GMSPath pathFromEncodedPath:overview_route];
-    GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
-    polyline.map = _mapView_;
+    _polyline = [GMSPolyline polylineWithPath:path];
+    _polyline.map = _mapView_;
 }
 
 @end
